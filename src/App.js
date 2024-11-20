@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './components/MultipleLogin';
+import { MsalProvider } from '@azure/msal-react';
+import { PublicClientApplication } from '@azure/msal-browser';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Profile from './components/Profile';
+import { GoogleOAuthProvider } from '@react-oauth/google'; 
+
+// Configuración para Microsoft Login
+const msalConfig = {
+  auth: {
+    clientId: "TU_MICROSOFT_CLIENT_ID", // Reemplaza con tu ID de cliente de Microsoft
+    authority: "https://login.microsoftonline.com/common",
+  },
+};
+
+
+const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GoogleOAuthProvider clientId="TU_GOOGLE_CLIENT_ID"> {/* Aquí agregas tu client ID de Google */}
+      <MsalProvider instance={msalInstance}>
+        <Router>
+          <div className="App">
+            <h1>Welcome to the Login Page</h1>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+        </Router>
+      </MsalProvider>
+    </GoogleOAuthProvider>
+  
   );
 }
 
 export default App;
+
