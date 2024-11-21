@@ -19,7 +19,7 @@ const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId="TU_GOOGLE_CLIENT_ID"> {/* Aquí agregas tu client ID de Google */}
+    <GoogleOAuthProvider clientId="994530759230-rimr910kj1nq249uo2land5l7o8hlarc.apps.googleusercontent.com"> {/* Aquí agregas tu client ID de Google */}
       <MsalProvider instance={msalInstance}>
         <Router>
           <div className="App">
