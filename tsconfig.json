@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                    // Configuración de la versión de JavaScript
+    "module": "commonjs",                  // Configuración del módulo
+    "esModuleInterop": true,               // Permite la interoperabilidad con módulos ES
+    "forceConsistentCasingInFileNames": true,  // Asegura la consistencia en los nombres de archivos
+    "skipLibCheck": true,                  // Omite la comprobación de archivos de declaración de bibliotecas
+    "jsx": "react-jsx",                   // Especifica el tipo de JSX a usar
+    "strict": true                         // Habilita todas las comprobaciones estrictas
+  },
+  "include": [
+    "src/**/*"                             // Incluir todo el código dentro de la carpeta 'src'
+  ]
+}
