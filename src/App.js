@@ -6,24 +6,21 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Profile from './components/Profile';
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
 
-// Configuración para Microsoft Login
 const msalConfig = {
   auth: {
-    clientId: "TU_MICROSOFT_CLIENT_ID", // Reemplaza con tu ID de cliente de Microsoft
+    clientId: "TU_MICROSOFT_CLIENT_ID",
     authority: "https://login.microsoftonline.com/common",
   },
 };
-
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId="994530759230-rimr910kj1nq249uo2land5l7o8hlarc.apps.googleusercontent.com"> {/* Aquí agregas tu client ID de Google */}
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <MsalProvider instance={msalInstance}>
         <Router>
           <div className="App">
-            <h1>Welcome to the Login Page</h1>
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/profile" element={<Profile />} />

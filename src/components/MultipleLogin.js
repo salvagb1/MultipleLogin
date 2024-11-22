@@ -42,7 +42,6 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <h2>Login</h2>
             <div className="login-buttons">
                 <GoogleLogin
                     onSuccess={handleGoogleSuccess}
@@ -50,13 +49,14 @@ const Login = () => {
                     useOneTap
                     theme="outline"
                 />
-
                 <button onClick={handleMicrosoftLogin} className="microsoft-button">
-                    Login with Microsoft
+                    Login with Microsoft  {process.env.REACT_APP_GITHUB_CLIENT_ID} gitssss {process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 </button>
+                
+
 
                 <GitHubLogin
-                    clientId="Ov23lioDtRciLJgIkHIv" // Coloca aquí tu Client ID
+                    clientId={process.env.REACT_APP_GITHUB_CLIENT_ID}
                     onSuccess={handleGitHubSuccess}
                     onFailure={handleGitHubFailure}
                     redirectUri="http://localhost:3000"
